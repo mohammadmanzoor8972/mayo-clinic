@@ -1,0 +1,16 @@
+<table border="1" style="margin-left:3%;margin-top:5%">
+  <tr *ngFor="let phy of physicianStream | async;let i = index">
+    <td>{{phy.lastName}}</td>
+    <ng-container *ngFor="let day of dayStream | async;let j = index">
+    <td *ngIf="i===0">{{day.name}}</td>
+    <td *ngIf="i>0"><input [ngModel]="getPhysicianCapacity(phy,day)" (ngModelChange)="setSurgicalDuration($event,phy,day)"/></td>
+    </ng-container>
+  </tr>
+</table>
+<section style="margin-left:3%;margin-top:5%"><div>
+    <button (click)="save()">save</button>
+</div>
+<div>
+  <a [routerLink]="['/priority/',departmentId]">Next</a><!--stream-->
+</div>
+</section>

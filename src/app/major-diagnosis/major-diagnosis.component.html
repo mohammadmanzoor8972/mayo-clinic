@@ -1,0 +1,30 @@
+<!-- <h1>{{departmentId}}</h1> -->
+<ul>
+  <li *ngFor="let md of majorDiagnosisStream | async" style="margin-top:3%">
+    <h4>{{labelFunction(md)}}
+      <button (click)="remove(md)">-</button>
+    </h4>
+    <ul>
+      <li *ngFor="let indication of filter(md._id) | async" style="margin-top:1%">
+        {{indication.name}}<button (click)="removeIndication(indication)">remove</button>
+      </li>
+    </ul>
+    <ul>
+      <li style="margin-top:1%">
+        <div>Add an Indication</div>
+        <div><input [ngModel]="getIndicationInput(md)" (ngModelChange)="setIndicationInput($event,md)"><button (click)="addInd(md)">add</button></div>
+      </li>
+    </ul>
+  </li>
+  <li style="margin-top:3%">
+    <div>Add a Major Diagnosis</div>
+    <div>
+      <input #newM [(ngModel)]="majorDiagnosisLabel"/>
+      <button (click)="add()">+</button>
+  </div>
+  </li>
+</ul>
+<div style="margin-left:2%"><h4><a [routerLink]="['/surgicalduration/',departmentIdStream | async]">Next</a></h4></div>
+<!-- <ul>
+  <li *ngFor="let ind of indicationStream | async">{{ind.name}}</li>
+</ul> -->

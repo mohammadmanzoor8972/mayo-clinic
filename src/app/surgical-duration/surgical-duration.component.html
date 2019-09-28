@@ -1,0 +1,25 @@
+<!-- <table border="1">
+  <tr *ngFor="let md of mds;let i = index">
+    <td>{{md}}</td>
+    <ng-container *ngFor="let phy of phys;let j = index">
+    <td *ngIf="i===0">{{phy}}</td>
+    <td *ngIf="i>0"><input type="number"/></td>
+    </ng-container>
+  </tr>
+</table> -->
+<table border="1" style="margin-left:3%;margin-top:5%">
+  <tr *ngFor="let maj of majorDiagnosisStream | async;let i = index">
+    <td>{{maj.name}}</td>
+    <ng-container *ngFor="let ph of physicianStream | async;let j = index">
+    <td *ngIf="i===0">{{ph.firstName}}</td>
+    <td *ngIf="i>0"><input [ngModel]="getSurgicalDuration(maj,ph)" (ngModelChange)="setSurgicalDuration($event,maj,ph)"/></td>
+    </ng-container>
+  </tr>
+</table>
+<section style="margin-left:3%;margin-top:5%"><div>
+    <button (click)="save()">save</button>
+</div>
+<div>
+  <a [routerLink]="['/capacity/',departmentId]">Next</a>
+</div>
+</section>

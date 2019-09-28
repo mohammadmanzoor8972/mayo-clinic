@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~element.ui/modules/core";
+@import "~element.ui/modules/normalize";
+
+@import "./assets/variables";
+
+app-root {
+  font-family: 'Roboto',sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+
+  >app-sidebar {
+    width: $header-height;
+  }
+
+  main-header {
+    z-index: 1;
+
+    @include media("<tablet") {
+      margin-left: $header-height;
+    }
+  }
+
+  @include media("<tablet") {
+    app-sidebar {
+      margin: 0;
+      width: 100vw;
+      position: fixed;
+    }
+  }
+
+  router-outlet + * {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+  }
+}

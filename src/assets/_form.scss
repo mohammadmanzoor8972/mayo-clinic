@@ -1,0 +1,83 @@
+@import "~element.ui/modules/core";
+
+$animation-delay: .5s;
+
+%form {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+
+  div.field-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    margin: $space-stack-l;
+
+    label {
+    }
+
+    input, select {
+      min-width: 40vw;
+
+      @include media("<desktop") {
+        min-width: 60vw;
+      }
+
+      width: auto;
+      margin-right: auto;
+      @include media("<tablet") {
+        margin-right: 0;
+      }
+
+      box-sizing: border-box;
+    }
+
+    label.msg {
+      display: none;
+      font-size: .8em;
+      color: $error-msg-color;
+      line-height: 1;
+      text-align: left;
+
+      animation: maxheight .5s $animation-delay forwards;
+      overflow: hidden;
+      max-height: 0;
+
+      svg {
+        margin-right: $space-sm;
+        height: 1em;
+        width: 1em;
+        fill: $error-msg-color;
+      }
+    }
+
+    input.ng-invalid.ng-dirty,
+    input.ng-invalid.ng-touched {
+      transition: border-color 0s $animation-delay, border-width 0s $animation-delay;
+      @extend %form-base.error;
+
+      & ~ label.msg {
+        display: flex;
+      }
+    }
+  }
+
+  button {
+    align-self: flex-start;
+  }
+}
+
+@keyframes maxheight {
+  from {
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+  }
+
+  to {
+    padding-top: $space-sm;
+    padding-bottom: $space-sm;
+    max-height: 5.5em;
+  }
+}

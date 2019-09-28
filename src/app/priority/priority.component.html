@@ -1,0 +1,25 @@
+<form [formGroup]="pForm" *ngIf="pForm">
+  <table formArrayName="priority">
+    <thead>
+    <tr>
+      <th >Name</th>
+      <th >Priority</th>
+      <th >Start At</th>
+      <th >End At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of pForm.controls.priority.controls; let i=index"
+        [formGroupName]="i" >
+      <td><input type='text' formControlName="name"></td>
+      <td><input type='text' formControlName="priorityNumber"></td>
+      <td><input type='text' formControlName="startAt"></td>
+      <td><input type='text' formControlName="endAt"></td>
+      <td><button (click)="remove(i)">-</button></td>
+    </tr>
+    </tbody>
+  </table>
+</form>
+
+<button (click)="addRow()">Add</button>
+<button (click)="submit()" [disabled]="!pForm.valid">Next</button>

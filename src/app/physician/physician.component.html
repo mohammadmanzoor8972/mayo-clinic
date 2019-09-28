@@ -1,0 +1,24 @@
+<div *ngFor="let phys of physicianStream | async" style="margin-top:2%">
+  <section class="user-area">
+    <img src="http://quarterly.mayo.edu/qtphotos/{{phys.personId}}.jpg"/>
+    <span style="margin-left:1%">{{labelFunction(phys)}}</span>
+    <span style="margin-left:1%"><button (click)="remove(phys)">-</button></span>
+  </section>
+</div>
+<section style="margin-left:2%">
+  <div><h4>Add a new physician here</h4></div>
+  <div>
+    <input #newP [(ngModel)]="physicianLabel"/>
+    <button (click)="lookup()">Look Up</button>
+  </div>
+</section>
+<section style="margin-left:2%;margin-top:2%">
+  <div [hidden]="!physician.firstName">
+    <div>{{physician.lastName}}, {{physician.firstName}} : {{physician.title}}</div>
+    <div style="margin-left:5%"><img src="http://quarterly.mayo.edu/qtphotos/{{physician.personId}}.jpg"></div>
+    <div><button (click)="add()">Add</button></div>
+  </div>
+</section>
+<section style="margin-left:2%;margin-top:2%">
+    <h4><a [routerLink]="['/majordiagnosis/',departmentIdStream | async]">Continue</a></h4>
+</section>

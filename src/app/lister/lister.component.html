@@ -1,0 +1,15 @@
+<h1>{{Title}}</h1>
+<ul>
+  <li *ngFor="let item of itemsStream | async">
+    {{labelFunction(item)}}
+    <button (click)="remove(item)">-</button>
+    <button (click)="configureDepartment(item)">Configure</button>
+  </li>
+  <li>
+    <input #newL [(ngModel)]="newLabel"/>
+    <button (click)="add()">+</button>
+  </li>
+  <li>
+    <button (click)="next()">Load</button>
+  </li>
+</ul>

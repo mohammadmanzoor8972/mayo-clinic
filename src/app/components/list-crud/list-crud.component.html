@@ -1,0 +1,11 @@
+<h1>{{Title}}</h1>
+<ul>
+  <li *ngFor="let item of items">
+    {{labelFunction(item)}}
+    <button (click)="removeLabel(item)">-</button>
+  </li>
+  <li>
+    <input #newL [(ngModel)]="newLabel"/>
+    <button (click)="createLabel()">+</button>
+  </li>
+</ul>

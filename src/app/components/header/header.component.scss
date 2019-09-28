@@ -1,0 +1,41 @@
+@import "~element.ui/modules/core";
+
+@import "../../../assets/variables";
+
+.app-name {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-left: .6em;
+    height: 1.3em;
+    width: 1.3em;
+
+    fill: $icon-color;
+  }
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  max-height: 100%;
+  margin-left: auto;
+  img {
+    align-self: stretch;
+    margin-left: 1.3em;
+    border-radius: 50%;
+    height: calc(#{$header-height} - 1em);
+    width: calc(#{$header-height} - 1em);
+  }
+  span {
+    font-size: .9em;
+  }
+}
+
+:host {
+  display: flex;
+  width: calc(100% - #{$header-height});
+  align-items: center;
+  padding: .5em 1em;
+  height: $header-height;
+  box-sizing: border-box;
+}

@@ -1,0 +1,21 @@
+<h1>{{Title}}</h1>
+<ul>
+  <li *ngFor="let dept of departmentStream">
+    <div>
+      {{dept|json}}
+      <a [routerLink]="[dept._id]">{{labelFunction(dept)}}</a>
+      <button style="margin-left:2%"  (click)="remove(dept)">-</button>
+    </div>
+  </li>
+</ul>
+<legend>
+  <section style="margin-left:2%">
+  <div>
+    <h4>Add a new department here</h4>
+  </div>
+  <div>
+    <input #newL [(ngModel)]="newLabel"/>
+    <button (click)="add()" >Add</button>
+  </div>
+</section>
+</legend>
